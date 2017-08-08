@@ -34,6 +34,10 @@ public class Abastible extends CordovaPlugin {
             this.startMeasurement(args.getInt(0), args.getInt(1), args.getString(2), args.getInt(3), args.getBoolean(4));
             return true;
         }
+        if (action.equals("startMeasurementMultiple")) {
+            this.startMeasurement(args.getInt(0), args.getInt(1), args.getString(2), args.getInt(3), args.getBoolean(4));
+            return true;
+        }
         return false;
     }
 

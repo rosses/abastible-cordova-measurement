@@ -18,6 +18,8 @@ extern const int INVALID_MEASUREMENT;
 extern const int MEASUREMENT_NOT_TRUSTED;
 extern const int BUTANE_INDEX_OFFSET;
 
+extern const int NEXT_MEASUREMENT;
+
 typedef NS_ENUM(NSUInteger, CRCilinderType) {
     CRCilinderType_5kg, // Default
     CRCilinderType_11kg,
@@ -38,6 +40,8 @@ typedef NS_ENUM(NSUInteger, CRFillingType) {
 - (void) calculateResult;
 
 -(void) startMeasurement:(CRCilinderType) cilinderType tarra:(NSInteger)tarraInGram fillingType:(CRFillingType)fillingType cilinderId:(NSString*)cilinderId cilinderIsFull:(BOOL)cilinderIsFull;
+
+-(void) startMeasurement:(CRCilinderType) cilinderType tarra:(NSInteger)tarraInGram fillingType:(CRFillingType)fillingType cilinderId:(NSString*)cilinderId cilinderIsFull:(BOOL)cilinderIsFull nrOfValidMeasurements:(NSInteger)nrOfValidMeasurements;
 
 @property (nonatomic, weak) id<Cilinder_API_Delegate> delegate;
 
