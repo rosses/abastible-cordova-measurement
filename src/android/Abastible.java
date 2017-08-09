@@ -9,7 +9,8 @@ import org.json.JSONObject;
 
 import android.widget.Toast;
 
-import com.move4mobile.abastiblesdk.CylinderApi;
+import com.move4mobile.abastiblesdk.AbastibleSDK;
+import com.move4mobile.abastiblesdk.OnMeasurementListener;
 import com.move4mobile.abastiblesdk.CylinderType;
 import com.move4mobile.abastiblesdk.FillingType;
 
@@ -31,17 +32,17 @@ public class Abastible extends CordovaPlugin {
         Log.e("JSON_ARRAY", args.toString());
 
         if (action.equals("startMeasurement")) {
-            this.startMeasurement(args.getInt(0), args.getInt(1), args.getString(2), args.getInt(3), args.getBoolean(4));
+            this.startMeasurement(args.getInt(0), args.getInt(1), args.getString(2), args.getInt(3), args.getBoolean(4), 1);
             return true;
         }
         if (action.equals("startMeasurementMultiple")) {
-            this.startMeasurement(args.getInt(0), args.getInt(1), args.getString(2), args.getInt(3), args.getBoolean(4));
+            this.startMeasurement(args.getInt(0), args.getInt(1), args.getString(2), args.getInt(3), args.getBoolean(4), args.getInt(5));
             return true;
         }
         return false;
     }
 
-    private void startMeasurement(int weight, int tarra, String type, int id, boolean full){
+    private void startMeasurement(int weight, int tarra, String type, int id, boolean full, int nrOfMeasurements){
         CylinderType ct;
         FillingType ft;
 
@@ -91,7 +92,7 @@ public class Abastible extends CordovaPlugin {
         mContext = this.cordova.getActivity();
 
         //Do measurement (10 seconds)
-        CylinderApi.get(mContext).startMeasurement(ct, tarra, ft, id, full, new CylinderApi.OnMeasurementListener() {
+        AbastibleSDK.get(mContext).startMeasurement(ct, tarra, ft, id, full, nrOfMeasurements, new OnMeasurementListener() {
             @Override
             public void onMeasurementFinished(final int i) {
                 //send result back
