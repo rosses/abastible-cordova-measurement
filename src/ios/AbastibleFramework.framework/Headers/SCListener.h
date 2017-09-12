@@ -23,7 +23,7 @@
 // Hardware sample rate
 #define kSAMPLERATE                     11025
 
-#define PEAK_FOUND_ERROR        -1
+#define PEAK_FOUND_ERROR        -2
 #define CAL_ERROR               -2
 #define FINAL_STEP_ERROR        -3
 #define LEVEL_STEP_ERROR        -4
